@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block loginstyle %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.1/css/dataTables.dateTime.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block logout %}
+  <div class="input">
+    <div class="input-addon">
+      <a href="{{ url_for('_frontend.logout') }}" style="text-decoration: none;"><i class="material-icons">logout</i> Logout</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<hr>
+<div id="header" style="display: flex; justify-content: space-between;">
+  <span><h3>Drone acquisitions</h3></span>
+  <a href="{{ url_for('_frontend.laboratory_acquisitions') }}" style="text-decoration: none;">Go to Laboratory acquisitions</a>
+</div>
+
+<hr>
+
+{% if tipo == 'admin' %}
+<div style="display: flex; justify-content: space-between;">
+  <a class="nav-item">
+    <form method="POST" enctype="multipart/form-data" id="drone_upload" action="{{ url_for('_frontend.upload_droneAcq_csv') }}">
+      <label for="myFile" title="Upload drone acquisition CSV">
+        <img src="./static/upload_csv.png" alt="Upload drone acquisition CSV" style="cursor: pointer;">
+      </label>
+      <input onchange="$('#drone_upload').submit()" type="file" id="myFile" name="file" accept=".csv" class="form-control-file" style="display: none;">
+    </form>
+  </a>
+
+    <a class="nav-item">
+      <form action="{{ url_for('_frontend.upload_zip') }}" id="zipUpload" method="POST" enctype="multipart/form-data">
+          <label for="myFile2" title="Upload images' zip">
+              <img src="./static/add_photo.png" alt="Upload images' zip" style="cursor: pointer;">
+          </label>
+          <input onchange="$('#zipUpload').submit()" type="file" id="myFile2" class="form-control-file" name="file" accept=".zip" style="display: none;">                    
+      </form>
+    </a>
+
+    <a class="nav-item">
+      <form action="{{ url_for('_frontend.upload_model') }}" id="modelUpload" method="POST" enctype="multipart/form-data">
+          <label for="myFile3" title="Upload model">
+              <img src="./static/model.png" alt="Upload model" style="cursor: pointer;">
+          </label>
+          <input onchange="$('#modelUpload').submit()" type="file" id="myFile3" class="form-control-file" name="file" accept=".zip" style="display: none;">                    
+      </form>
+    </a>
+</div>
+<hr>
+{% endif %}
+
+
+<div class="input-group mb-3">
+  <input type="text" id="sito" class="form-control" placeholder="Search a site...">
+  <span class="input-group-text"><img src="./static/location.png" alt="Select a site"></span>
+  <input type="text" id="min" class="form-control" name="min"  placeholder="From...">
+  <span class="input-group-text"><img src="./static/calendar.png" alt="Select date range"></span>
+  <input type="text" id="max" class="form-control" name="max"  placeholder="To...">
+</div>
+
+
+<div class="table-responsive" style="width: 100%;">
+  <table id="data" class="table table-dark table-striped" style="width: 100%;">
+    <thead>
+      <tr>
+        {% for var in header %}
+        <th style="width: fit-content;">{{ var }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<div id="footer" style="position: relative;left:50%;width: fit-content;bottom: 0px;-webkit-transform: translateX(-50%);transform: translateX(-50%)">
+  <img src="static/Logo_orizzontale_scritta_grande.png"  style="height: 70px; width: 200px;"  alt="">
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+  <script src="./static/droneAcq_table_scripts.js"></script>
+{% endblock %}
