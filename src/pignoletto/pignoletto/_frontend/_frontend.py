@@ -306,7 +306,7 @@ def signup():
         new_user.role.append(r)
 
         db.session.commit()
-        flash('Sign in successfully!', category='success')
+        flash('Sign up successfully!', category='success')
 
     return render_template("login.html", user=current_user)
 

@@ -75,7 +75,6 @@ def create_views():
 	# for each raster
 	for cur_raster_id, cur_raster_name, cur_raster_table in rasters:
 		# create layer
-		continue
 		qgis_manager.add_PostGIS_raster_layer(
 			host_name = app.config.get("IP"), 
 			port = app.config.get("PORT"), 
