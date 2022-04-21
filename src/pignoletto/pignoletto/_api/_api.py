@@ -25,4 +25,4 @@ def api_login():
     if check_password_hash(user.password, auth.password):
         token = jwt.encode({"id": user.id, "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, current_app.config["SECRET_KEY"], algorithm="HS256")
         return jsonify({"token": token.decode('UTF-8')}, 200)
-    return jsonify({"Error": "Inavlid password"}, 400)
+    return jsonify({"Error": "Invalid password"}, 400)
