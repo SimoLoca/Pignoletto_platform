@@ -4,9 +4,11 @@ COPY ./pignoletto /pignoletto-project/pignoletto
 COPY ./requirements.txt /pignoletto-project
 COPY ./run.py /pignoletto-project
 COPY ./run.ini /pignoletto-project
-COPY ./pignoletto_app /pignoletto-project
+COPY ./wait-for-db.sh /pignoletto-project
 
 WORKDIR /pignoletto-project
+
+RUN chmod +x /pignoletto-project/wait-for-db.sh
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y gnupg software-properties-common wget nano \
@@ -18,5 +20,3 @@ RUN apt-get update \
     && apt-get install -y python3-pip \
     && pip3 install uwsgi \
     && pip3 install -r requirements.txt
-    
-CMD ["uwsgi", "run.ini"]
