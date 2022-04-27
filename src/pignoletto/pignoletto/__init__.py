@@ -47,27 +47,6 @@ def create_views():
 		os.makedirs(os.path.join(lizmap_path, "pignoletto"))
 		final_path = os.path.join(lizmap_path, "pignoletto/pignoletto.qgs")
 	qgis_manager = QGISManager(final_path)
-	views = db_manager.create_views()
-	# generate layers corresponding to created views
-	for cur_group in views.keys():
-		# create group
-		qgis_manager.create_group(cur_group)
-		# for each element
-		for cur_element in views[cur_group]:
-			# TODO: check if it's a layer to add or a subgroup
-			qgis_manager.add_PostGIS_vector_layer(
-						host_name = app.config.get("IP"), 
-						port = app.config.get("PORT"), 
-						db_name = app.config.get("DB_NAME"), 
-						username = app.config.get("USERNAME"),
-						password = app.config.get("PASSWORD"), 
-						schema = app.config.get("SCHEMA"),
-						table_name = views[cur_group][cur_element],
-						geomColumn = "coords",
-						layer_name = cur_element,
-						pk='id', filter=None, group=None)
-			# move in group
-			qgis_manager.move_layer_in_group(cur_group, cur_element)
 
 	# view all rasters
 	qgis_manager.create_group('rasters')
@@ -89,6 +68,28 @@ def create_views():
 		# move in subgroup
 		qgis_manager.move_layer_in_group('rasters', cur_raster_name) 
 
+	views = db_manager.create_views()
+	# generate layers corresponding to created views
+	for cur_group in views.keys():
+		# create group
+		qgis_manager.create_group(cur_group)
+		# for each element
+		for cur_element in views[cur_group]:
+			# TODO: check if it's a layer to add or a subgroup
+			qgis_manager.add_PostGIS_vector_layer(
+						host_name = app.config.get("IP"), 
+						port = app.config.get("PORT"), 
+						db_name = app.config.get("DB_NAME"), 
+						username = app.config.get("USERNAME"),
+						password = app.config.get("PASSWORD"), 
+						schema = app.config.get("SCHEMA"),
+						table_name = views[cur_group][cur_element],
+						geomColumn = "coords",
+						layer_name = cur_element,
+						pk='id', filter=None, group=None)
+			# move in group
+			qgis_manager.move_layer_in_group(cur_group, cur_element)
+			
 	# Set WFS in order to use lizmap plugins
 	qgis_manager.set_WFSCapabilities()
 
