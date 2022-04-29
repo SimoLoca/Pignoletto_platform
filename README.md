@@ -10,6 +10,7 @@ it can easily handle proximity, airborne and spaceborne data and furnishes to th
 tools and proper visualizations to perform precision agriculture.
 
 The general architecture of the tool can be seen in the next figure.
+
 ![Architecture](images/architecture.png)
 
 As seen, it provides 3 different interface to the system:
@@ -18,10 +19,12 @@ As seen, it provides 3 different interface to the system:
 * **API**, which allows to insert acquisitions made by drones.
 
 Next, we can see an example of what **Platform** could look like.
+
 ![platform](images/demo.png)
 
 
 Here, instead is presented the interface of **Backend**.
+
 ![backend](images/Backend.png)
 
 
