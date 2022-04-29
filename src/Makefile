@@ -22,18 +22,6 @@ BASEDIR:=$(shell realpath ..)
 
 WPS_MODULE_SRC:=$(shell realpath .)
 
-main:
-	@cat <<- EOF
-		Commandes:
-			run:   initialise environnement and run stack
-			stop:  stop docker and remove containers
-			clean: reset containers and remove lizmap configuration 
-			
-			Note: Un fichier d'environment pour docker-compose  
-			est crée à chaque invocation de 'run'.
-			Cela permet d'utiliser les commandes 'docker-compose'
-			sans passer par le Makefile
-	EOF
 
 dirs:
 	@mkdir -p $(LIZMAP_DIR)/www/var/log \
