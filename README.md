@@ -29,7 +29,7 @@ Here, instead is presented the interface of **Backend**.
 
 
 ### License
-...
+Pignoletto Platform is released under the [MIT License](./LICENSE).
 
 ### Acknowledgments
 ...
