@@ -27,6 +27,8 @@ Here, instead is presented the interface of **Backend**.
 
 ![backend](images/Backend.png)
 
+### Documentation
+[**Wiki**](https://github.com/SimoLoca/Pignoletto_platform_Docker/wiki)
 
 ### License
 Pignoletto Platform is released under the [MIT License](./LICENSE).
