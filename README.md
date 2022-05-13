@@ -34,7 +34,7 @@ Here, instead is presented the interface of **Backend**.
 Pignoletto Platform is released under the [MIT License](./LICENSE).
 
 ### Acknowledgments
-...
+Research developed in the context of the project PIGNOLETTO $-$ Call HUB Ricerca e Innovazione CUP (Unique Project Code) n. E41B20000050007, co-funded by POR FESR 2014-2020 (Programma Operativo Regionale, Fondo Europeo di Sviluppo Regionale – Regional Operational Programme, European Regional Development Fund).
 
 ### Cite
 
