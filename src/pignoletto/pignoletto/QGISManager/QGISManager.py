@@ -18,6 +18,7 @@ from qgis.core import (
     QgsLayerTreeLayer
     )
 from .lizmap_API import LizmapConfig
+import numpy as np
 
 
 class QGISManager:
@@ -519,10 +520,11 @@ class QGISManager:
 
         lv = LizmapConfig(self.project)
         if lv:
+            zoom = np.logspace(3, np.log10(50*10**6), num=15, dtype=int).tolist()
             my_global_options = {
-                "mapScales": [1000,10000,25000,50000,100000,1000000,10000000,25000000,50000000],
-                "minScale": 1000,
-                "maxScale": 50000000,
+                "mapScales": zoom,
+                "minScale": min(zoom),
+                "maxScale": max(zoom),
                 "popupLocation": "dock",
                 "pointTolerance": 25,
                 "lineTolerance": 10,
