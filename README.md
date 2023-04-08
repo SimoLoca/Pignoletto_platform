@@ -39,10 +39,15 @@ Research developed in the context of the project PIGNOLETTO - Call HUB Ricerca e
 ### Cite
 
 ```bibtex
-@article{...,
-  title={...},
-  author={...},
-  journal={...},
-  year={...}
+@article{s23083788,
+AUTHOR = {Piccoli, Flavio and Locatelli, Simone Giuseppe and Schettini, Raimondo and Napoletano, Paolo},
+TITLE = {An Open-Source Platform for GIS Data Management and Analytics},
+JOURNAL = {Sensors},
+VOLUME = {23},
+YEAR = {2023},
+NUMBER = {8},
+ARTICLE-NUMBER = {3788},
+URL = {https://www.mdpi.com/1424-8220/23/8/3788},
+ISSN = {1424-8220}
 }
 ```
