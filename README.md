@@ -1,7 +1,7 @@
 ![Pignoletto](images/logo.jpg)
 # Pignoletto Platform
 
-This repository contains the source code of [**Pignoletto Platform**](inserire link).
+This repository contains the source code of [**An Open-Source Platform for GIS Data Management and Analytics**](https://www.mdpi.com/1424-8220/23/8/3788/html).
 
 Pignoletto platform is a system designed for the collection, the visualization the
 management and the analysis (through manual inspection or automatic detection) of heterogeneous
